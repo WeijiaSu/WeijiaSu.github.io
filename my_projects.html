@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Projects</title>
+	<style>
+		body {
+			background-color: #f5f5f5;
+		}
+		h1 {
+			font-size: 36px;
+			color: #333;
+			text-align: center;
+			margin-top: 50px;
+			font-family: cursive;
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		li {
+			margin: 20px;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			text-align: center;
+			width: 300px;
+			height: 200px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-family: cursive;
+            transition: background-color 0.5s ease-in-out;
+            cursor: pointer;
+		}
+        li:nth-child(-n+6):hover {
+            background-color: lightgrey;
+        }
+        li:nth-child(5):hover, li:nth-child(5):active, li:nth-child(5):focus {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 36px;
+        }
+
+	</style>
+</head>
+
+<body>
+	<h1 style="font-size: 48px;">Projects</h1>
+	<ul>
+		<li style="font-size: 24px;" onclick="enlargeCard(this, 'Expertly managed and analyzed patient samples from clinical trials, employing cutting-edge multi-omics data analysis techniques to unveil critical genetic characteristics of glioblastoma patients.')">Clinical genomics & Multi-omics Data Analysis</li>
+		<li style="font-size: 24px;" onclick="enlargeCard(this, 'Leveraged ONT technology for high-throughput sequencing across various biological systems, including human genetics, animal models, clinical trials, and cancer patient sample sequencing.')">Nanopore Sequencing & ONT Technologies</li>
+		<li style="font-size: 24px;" onclick="enlargeCard(this, 'Developed and implemented robust bioinformatics tools for transposon analysis, facilitating the identification of transposon-derived genomic diversity through high-throughput sequencing data.')">Bioinformatics Solutions for Transposon Analysis</li>
+		<li style="font-size: 24px;" onclick="enlargeCard(this, 'Conducted in-depth research on the biogenesis and features of eccDNA in various model organisms, and designed innovative pipelines for eccDNA identification using nanopore sequencing.')">Extrachromosomal Circular DNA (eccDNA) Research</li>
+        <li style="font-size: 24px;" onclick="enlargeCard(this, 'Spearheaded DNA and RNA sequencing initiatives and established sophisticated bioinformatics pipelines to pinpoint tumor-specific structural variations.')">Tumor-Specific Structural Variation Analysis</li>
+        <li style="font-size: 24px;" onclick="enlargeCard(this, 'Effectively collaborated with a multi-disciplinary team throughout the experimental cycle, from sample collection to data analysis, and demonstrated aptitude in communicating results.')">Collaborative Research & Communication</li>
+	</ul>
+    <div id="overlay" onclick="shrinkCard()" style="display: none;">
+        <div id="card"></div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="index.html" style="text-decoration: none;">
+            <button onmouseover="this.style.backgroundColor='white'; this.style.color='grey'; this.style.transition='background-color 0.5s ease-in-out, color 0.5s ease-in-out';" onmouseout="this.style.backgroundColor='grey'; this.style.color='white'; this.style.transition='background-color 0.5s ease-in-out, color 0.5s ease-in-out';" style="background-color: grey; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.2); font-family: cursive;">BACK</button>
+        </a>
+    </div>
+    <script>
+        function displayText(card, content) {
+            var cardDiv = document.getElementById("card");
+            cardDiv.innerHTML = content;
+        }
+        function enlargeCard(card, content) {
+            var overlay = document.getElementById("overlay");
+            var cardDiv = document.getElementById("card");
+            displayText(card, content);
+            overlay.style.display = "block";
+            cardDiv.style.width = "800px";
+            cardDiv.style.height = "600px";
+            cardDiv.style.fontSize = "36px";
+            cardDiv.style.backgroundColor = "black";
+            cardDiv.style.borderRadius = "20px";
+            cardDiv.style.boxShadow = "0 0 20px rgba(0,0,0,0.4)";
+            cardDiv.style.display = "flex";
+            cardDiv.style.justifyContent = "center";
+            cardDiv.style.alignItems = "center";
+            cardDiv.style.position = "fixed";
+            cardDiv.style.top = "50%";
+            cardDiv.style.left = "50%";
+            cardDiv.style.transform = "translate(-50%, -50%)";
+            cardDiv.style.paddingLeft = "50px";
+            cardDiv.style.paddingRight = "50px";
+            cardDiv.style.color = "white";
+            var allCards = document.getElementsByTagName("li");
+            for (var i = 0; i < allCards.length; i++) {
+                if (allCards[i] != card) {
+                    allCards[i].style.filter = "blur(5px)";
+                }
+            }
+        }
+        function shrinkCard() {
+            var overlay = document.getElementById("overlay");
+            var cardDiv = document.getElementById("card");
+            overlay.style.display = "none";
+            cardDiv.style.width = "300px";
+            cardDiv.style.height = "200px";
+            cardDiv.style.fontSize = "24px";
+            cardDiv.style.backgroundColor = "white";
+            cardDiv.style.borderRadius = "10px";
+            cardDiv.style.boxShadow = "0 0 10px rgba(0,0,0,0.2)";
+            cardDiv.style.display = "flex";
+            cardDiv.style.flexDirection = "column";
+            cardDiv.style.justifyContent = "center";
+            cardDiv.style.alignItems = "center";
+            cardDiv.style.position = "fixed";
+            cardDiv.style.top = "50%";
+            cardDiv.style.left = "50%";
+            cardDiv.style.transform = "translate(-50%, -50%)";
+            cardDiv.style.paddingLeft = "20px";
+            cardDiv.style.paddingRight = "20px";
+            cardDiv.style.color = "black";
+            var allCards = document.getElementsByTagName("li");
+            for (var i = 0; i < allCards.length; i++) {
+                allCards[i].style.filter = "none";
+            }
+        }
+    </script>
+</body>
+
+
+
+
+</html>
+
+
